@@ -16,11 +16,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvHeroes;
     private ArrayList<Hero> list = new ArrayList<>();
+    private String title = "Mode List";
+
+    private void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setActionBarTitle(title);
 
         rvHeroes = findViewById(R.id.rv_heroes);
         rvHeroes.setHasFixedSize(true);
@@ -38,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
         GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
         rvHeroes.setAdapter(gridHeroAdapter);
-
+    }
+    private void showRecyclerCardView(){
+        rvHeroes.setLayoutManager(new LinearLayoutManager(this));
+        CardViewHeroAdapter cardViewHeroAdapter = new CardViewHeroAdapter(list);
+        rvHeroes.setAdapter(cardViewHeroAdapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,12 +65,16 @@ public class MainActivity extends AppCompatActivity {
     public void setMode(int selectedMode) {
         switch (selectedMode) {
             case R.id.action_list:
+                title = "Mode List";
                 showRecyclerList();
                 break;
             case R.id.action_grid:
+                title = "Mode Grid";
                 showRecyclerGrid();
                 break;
             case R.id.action_cardview:
+                title = "Mode Card View";
+                showRecyclerCardView();
                 break;
         }
     }
