@@ -29,7 +29,7 @@
         android:id="@+id/btn_hitungBMI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hitung BMI"
+        android:text="@string/hitung_bmi"
         />
     <TextView
         android:id="@+id/print_hasil"
