@@ -21,7 +21,7 @@
         android:id="@+id/inp_BeratBadan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Berat Badan"
+        android:hint="@string/masukkan_berat_badan"
         android:inputType="numberDecimal"
         android:lines="1"
         />

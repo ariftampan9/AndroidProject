@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Modul1</string>
     <string name="hitung_bmi">Hitung BMI</string>
+    <string name="masukkan_berat_badan">Masukkan Berat Badan</string>
 </resources>
