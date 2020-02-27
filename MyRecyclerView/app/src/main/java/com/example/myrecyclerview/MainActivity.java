@@ -9,11 +9,12 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView rvHeroes;
     private ArrayList<Hero> list = new ArrayList<>();
     private String title = "Mode List";
@@ -77,5 +78,15 @@ public class MainActivity extends AppCompatActivity {
                 showRecyclerCardView();
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
