@@ -31,9 +31,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String inputTinggi = edtTinggi.getText().toString().trim();
             double berat = toDouble(inputBerat);
             double tinggi = toDouble(inputTinggi);
-            double BMI  = berat/Math.pow(tinggi,2);
+            double BMI  = berat/Math.pow(tinggi/100,2);
+            if(BMI<18.5){
+                txtViewHasil.setText("Kekurangan Berat badan");
+            } else if (BMI <= 24.9 && BMI >= 18.5) {
+                txtViewHasil.setText("Normal");
+            }else if (BMI <= 29.9 && BMI >= 18.5) {
+                txtViewHasil.setText("Kelebihan Berat Badan");
+            }else  {
+                txtViewHasil.setText("Obesitas");
+            }
 
-            txtViewHasil.setText(String.valueOf(BMI));
         }
 
     }
