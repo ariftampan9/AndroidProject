@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,24 +24,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hokepapp.R;
+import com.example.hokepapp.SignUp_Activity;
 import com.example.hokepapp.ui.login.LoginViewModel;
 import com.example.hokepapp.ui.login.LoginViewModelFactory;
 
-public class LoginActivity extends AppCompatActivity {
-
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView tvDaftar;
     private LoginViewModel loginViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        tvDaftar = findViewById(R.id.tvdaftar);
+        tvDaftar.setOnClickListener(this);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -57,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
@@ -117,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -127,5 +131,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.tvdaftar){
+            Intent pindahDaftar = new Intent(LoginActivity.this, SignUp_Activity.class);
+            startActivity(pindahDaftar);
+        }
     }
 }

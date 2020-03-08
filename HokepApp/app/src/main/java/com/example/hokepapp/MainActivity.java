@@ -26,5 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent loginSignupPage = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(loginSignupPage);
         }
+
     }
 }
