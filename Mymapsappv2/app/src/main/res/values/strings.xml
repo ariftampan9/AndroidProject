@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">mymaps</string>
+    <string name="app_name">Mymaps.appv2</string>
     <string name="map_key" translatable="false">AIzaSyAAe17kKxo0Ofg15fRjER3NDJpttxSaxC0</string>
 </resources>
